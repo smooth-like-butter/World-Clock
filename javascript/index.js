@@ -4,7 +4,7 @@ function updateTime() {
   let chicagoTime = chicagoElement.querySelector(".time");
   let currentChicagoTime = moment().tz("America/Chicago");
 
-  chicagoDate.innerHTML = currentChicagoTime.format("MMMM Do YYYY");
+  chicagoDate.innerHTML = currentChicagoTime.format("MMMM Do, YYYY");
   chicagoTime.innerHTML = currentChicagoTime.format(
     "h:mm:ss [<small>]A[</small>]"
   );
@@ -14,7 +14,7 @@ function updateTime() {
   let aucklandTime = aucklandElement.querySelector(".time");
   let currentAucklandTime = moment().tz("Pacific/Auckland");
 
-  aucklandDate.innerHTML = currentAucklandTime.format("MMMM Do YYYY");
+  aucklandDate.innerHTML = currentAucklandTime.format("MMMM Do, YYYY");
   aucklandTime.innerHTML = currentAucklandTime.format(
     "h:mm:ss [<small>]A[</small>]"
   );
@@ -32,7 +32,7 @@ function updateCity(event) {
     <div class="city">
         <div>
           <h2>${cityName}</h2>
-          <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+          <div class="date">${cityTime.format("MMMM Do, YYYY")}</div>
         </div>
         <div class="time">${cityTime.format(
           "h:mm:ss"
@@ -40,6 +40,9 @@ function updateCity(event) {
       </div>
       <a href="index.html" class="home">Back to home</a>
       `;
+  setTimeout(() => {
+    updateCity(event);
+  }, 1000);
 }
 updateTime();
 setInterval(updateTime, 1000);
